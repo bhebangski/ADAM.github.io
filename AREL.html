@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.2.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Adam's 1st Birthday!&lt;/title&gt;
+&lt;style&gt;
+    * { margin:0; padding:0; box-sizing: border-box; font-family: 'Arial', sans-serif;}
+    body { background: #fdf6e3; color: #333; overflow-x: hidden; position: relative; }
+    a { text-decoration: none; color: #ff6f00; }
+
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+
+    h1 { font-size: 2.5em; color: #ff6f00; margin-bottom: 10px; }
+    h2 { font-size: 1.5em; color: #333; margin-bottom: 20px; }
+
+    .countdown { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+    .countdown div { background: #ff6f00; color: white; padding: 15px; border-radius: 10px; width: 60px; }
+    .countdown span { display:block; font-size: 0.8em; margin-top:5px; }
+
+    .info { margin-bottom: 30px; }
+    .info p { margin: 10px 0; font-size: 1.1em; }
+
+    .dress-code { margin-bottom: 30px; }
+    .dress-code img { width: 100px; animation: bounce 2s infinite; }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-15px); }
+        60% { transform: translateY(-7px); }
+    }
+
+    .rsvp-btn {
+        display: inline-block;
+        background: #ff6f00;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-size: 1.2em;
+        margin-top: 20px;
+        transition: transform 0.2s;
+    }
+    .rsvp-btn:hover { transform: scale(1.1); }
+
+    .vehicle { position: absolute; bottom: 20px; width: 80px; }
+    .vehicle1 { left: -100px; animation: drive1 10s linear infinite; }
+    .vehicle2 { left: -150px; animation: drive2 12s linear infinite; }
+    @keyframes drive1 { 0% { left: -100px; } 100% { left: 110%; } }
+    @keyframes drive2 { 0% { left: -150px; } 100% { left: 110%; } }
+
+    .sound-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff6f00;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 1em;
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    canvas { position: fixed; top:0; left:0; pointer-events: none; z-index: 9999; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id=&quot;confetti&quot;&gt;&lt;/canvas&gt;
+
+&lt;img src=&quot;https://i.ibb.co/XtJ3QhQ/dump-truck.png&quot; class=&quot;vehicle vehicle1&quot; alt=&quot;Dump Truck&quot;&gt;
+&lt;img src=&quot;https://i.ibb.co/Qbq7YtQ/crane.png&quot; class=&quot;vehicle vehicle2&quot; alt=&quot;Crane&quot;&gt;
+
+&lt;button class=&quot;sound-btn&quot; id=&quot;soundBtn&quot;&gt;🔊 Mute&lt;/button&gt;
+
+&lt;audio id=&quot;bgSound&quot; loop&gt;
+    &lt;source src=&quot;https://www.soundjay.com/transportation/construction-truck-01.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+&lt;/audio&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;Adam Rover's 1st Birthday!&lt;/h1&gt;
+    &lt;h2&gt;Construction Party 🎉🚧&lt;/h2&gt;
+
+    &lt;div class=&quot;countdown&quot;&gt;
+        &lt;div&gt;&lt;span id=&quot;days&quot;&gt;0&lt;/span&gt;Days&lt;/div&gt;
+        &lt;div&gt;&lt;span id=&quot;hours&quot;&gt;0&lt;/span&gt;Hours&lt;/div&gt;
+        &lt;div&gt;&lt;span id=&quot;minutes&quot;&gt;0&lt;/span&gt;Minutes&lt;/div&gt;
+        &lt;div&gt;&lt;span id=&quot;seconds&quot;&gt;0&lt;/span&gt;Seconds&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;info&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Date &amp; Time:&lt;/strong&gt; 18 October 2025, 04:00 PM&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt; McDonalds WTC Abu Dhabi&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;RSVP:&lt;/strong&gt; Mommy Bev +971 55 396 5408 | Daddy Orly +971 55 834 4299&lt;/p&gt;
+        &lt;a class=&quot;rsvp-btn&quot; href=&quot;mailto:bev.orly@example.com?subject=RSVP%20Adam%20Birthday&quot;&gt;RSVP Now&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;dress-code&quot;&gt;
+        &lt;h2&gt;Dress Code&lt;/h2&gt;
+        &lt;p&gt;White Shirt, Safety Vest, Jeans&lt;/p&gt;
+        &lt;img src=&quot;https://i.ibb.co/NZ2G8pV/construction-baby.png&quot; alt=&quot;Construction Baby&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Countdown Timer
+    const countdownDate = new Date(&quot;October 18, 2025 16:00:00&quot;).getTime();
+    const daysEl = document.getElementById(&quot;days&quot;);
+    const hoursEl = document.getElementById(&quot;hours&quot;);
+    const minutesEl = document.getElementById(&quot;minutes&quot;);
+    const secondsEl = document.getElementById(&quot;seconds&quot;);
+
+    setInterval(() =&gt; {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysEl.innerText = days;
+        hoursEl.innerText = hours;
+        minutesEl.innerText = minutes;
+        secondsEl.innerText = seconds;
+    }, 1000);
+
+    // Confetti Animation
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiCount = 100;
+    const confetti = [];
+
+    function randomColor() {
+        const colors = ['#ff6f00','#ffd54f','#ffb74d','#ffa726','#ff7043'];
+        return colors[Math.floor(Math.random()*colors.length)];
+    }
+
+    for(let i=0;i&lt;confettiCount;i++){
+        confetti.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            r: Math.random()*6+4,
+            d: Math.random()*confettiCount,
+            color: randomColor(),
+            tilt: Math.random()*10-10,
+            tiltAngleIncrement: Math.random()*0.07+0.05,
+            tiltAngle:0
+        });
+    }
+
+    function drawConfetti(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        confetti.forEach(c=&gt;{
+            ctx.beginPath();
+            ctx.lineWidth = c.r/2;
+            ctx.strokeStyle = c.color;
+            ctx.moveTo(c.x + c.tilt + c.r/4, c.y);
+            ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r/4);
+            ctx.stroke();
+        });
+        updateConfetti();
+    }
+
+    function updateConfetti(){
+        confetti.forEach(c=&gt;{
+            c.tiltAngle += c.tiltAngleIncrement;
+            c.y += (Math.cos(c.d)+3+c.r/2)/2;
+            c.x += Math.sin(c.tiltAngle)*2;
+            c.tilt = Math.sin(c.tiltAngle)*12;
+
+            if(c.y&gt;canvas.height){
+                c.y = -10;
+                c.x = Math.random()*canvas.width;
+            }
+        });
+    }
+
+    setInterval(drawConfetti,20);
+
+    window.addEventListener('resize',()=&gt;{
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // Sound controls
+    const bgSound = document.getElementById('bgSound');
+    const soundBtn = document.getElementById('soundBtn');
+
+    // Play automatically after user interaction (required on mobile)
+    document.body.addEventListener('click', () =&gt; {
+        if(bgSound.paused) bgSound.play();
+    }, {once:true});
+
+    soundBtn.addEventListener('click', () =&gt; {
+        if(bgSound.paused){
+            bgSound.play();
+            soundBtn.textContent = &quot;🔊 Mute&quot;;
+        } else {
+            bgSound.pause();
+            soundBtn.textContent = &quot;🔇 Unmute&quot;;
+        }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
